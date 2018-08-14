@@ -14,6 +14,13 @@ node {
           sh 'mvn install'
        }
 	   
+	stage('deploy to tomcat'){
+		sshagent(['Tomcat']) {
+    		sh 'scp -o StrictHostKeyChecking=no target/*.war ec2user@172.31.35.113:/opt/apache-tomcat-8.0.53/webapps'
+			// some block
+}
+
+	}
       //stage('Sonar') {
                     //add stage sonar
                     //sh 'mvn sonar:sonar'
